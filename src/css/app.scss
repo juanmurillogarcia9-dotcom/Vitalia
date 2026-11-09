@@ -1,1 +1,144 @@
 // app global css
+
+html,
+body,
+#q-app {
+  width: 100%;
+  min-width: 320px;
+  min-height: 100%;
+  overflow-x: clip;
+}
+
+.q-layout,
+.q-page-container,
+.q-page {
+  min-width: 0;
+}
+
+.module-page,
+.dashboard-page,
+.home-page {
+  width: 100%;
+  min-width: 0;
+}
+
+.q-dialog__inner > .q-card {
+  max-width: calc(100vw - 24px);
+}
+
+@media (max-width: 700px) {
+  .module-page,
+  .dashboard-page,
+  .home-page {
+    padding-right: max(14px, env(safe-area-inset-right));
+    padding-bottom: max(32px, env(safe-area-inset-bottom));
+    padding-left: max(14px, env(safe-area-inset-left));
+  }
+
+  .module-page .page-heading,
+  .module-page .module-heading,
+  .dashboard-page .page-heading,
+  .home-page .welcome-banner {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .module-page .page-heading > .q-btn,
+  .module-page .module-heading > .q-btn,
+  .dashboard-page .heading-actions,
+  .home-page .welcome-banner > .q-btn {
+    width: 100%;
+  }
+
+  .module-page .page-heading > .q-btn,
+  .module-page .module-heading > .q-btn,
+  .home-page .welcome-banner > .q-btn {
+    min-height: 44px;
+  }
+
+  .module-page .filters {
+    flex-wrap: wrap;
+  }
+
+  .module-page .filters > *,
+  .module-page .filters .q-input,
+  .module-page .filters .q-select {
+    min-width: 0;
+    flex: 1 1 140px;
+  }
+
+  .module-page .meal-row {
+    display: grid;
+    grid-template-columns: 40px minmax(0, 1fr) auto;
+    align-items: start;
+    gap: 10px;
+    padding: 14px;
+  }
+
+  .module-page .meal-main {
+    overflow-wrap: anywhere;
+  }
+
+  .module-page .meal-nutrition {
+    grid-column: 2 / 3;
+    flex-flow: row wrap;
+    gap: 6px 12px;
+    white-space: normal;
+  }
+
+  .module-page .meal-actions {
+    grid-column: 3 / 4;
+    grid-row: 2;
+  }
+
+  .module-page .estimate-nutrients {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .q-table__middle {
+    max-width: 100%;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+  }
+
+  .q-table__middle > table {
+    min-width: 620px;
+  }
+
+  .q-toolbar {
+    min-height: 56px;
+    padding-right: 8px;
+    padding-left: 8px;
+  }
+
+  .q-toolbar__title {
+    min-width: 0;
+  }
+}
+
+@media (max-width: 420px) {
+  .module-page,
+  .dashboard-page,
+  .home-page {
+    padding-right: max(12px, env(safe-area-inset-right));
+    padding-left: max(12px, env(safe-area-inset-left));
+  }
+
+  .module-page .estimate-details {
+    padding: 12px;
+  }
+
+  .module-page .history-toolbar,
+  .module-page .history-title,
+  .module-page .chart-heading {
+    gap: 10px;
+  }
+
+  .module-page .scan-caption {
+    flex: 1 1 100%;
+  }
+
+  .q-dialog__inner {
+    padding: 12px;
+  }
+}

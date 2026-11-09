@@ -7,6 +7,7 @@ import {
 } from 'vue-router'
 
 import routes from './routes.js'
+import { getSupabase, isSupabaseConfigured } from '../lib/supabase.js'
 
 /*
  * If not building with SSR mode, you can
@@ -32,6 +33,36 @@ export default defineRouter((/* { store, ssrContext } */) => {
     // quasar.conf.js -> build -> vueRouterMode
     // quasar.conf.js -> build -> publicPath
     history: createHistory(import.meta.env.QUASAR_VUE_ROUTER_BASE)
+  })
+
+  Router.beforeEach(async to => {
+    if (!isSupabaseConfigured) {
+      if (to.meta.requiresAuth) {
+        return { path: '/welcome' }
+      }
+      return true
+    }
+
+    const client = await getSupabase()
+    const { data, error } = await client.auth.getSession()
+    if (error) {
+      console.error('No se pudo validar la sesión compartida:', error)
+      return { path: '/login', query: { sessionError: 'true' } }
+    }
+
+    const hasSession = Boolean(data.session)
+    if (to.meta.requiresAuth && !hasSession) {
+      return {
+        path: '/welcome',
+        query: to.fullPath === '/' ? {} : { redirect: to.fullPath }
+      }
+    }
+
+    if (to.meta.guestOnly && hasSession && to.query.recovery !== '1') {
+      return '/'
+    }
+
+    return true
   })
 
   return Router

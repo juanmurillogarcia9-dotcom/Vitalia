@@ -1,18 +1,59 @@
+import MainLayout from '../layouts/MainLayout.vue'
+import IndexPage from '../pages/IndexPage.vue'
+import LoginView from '../pages/LoginView.vue'
+
 const routes = [
+  // Send guests to login, while signed-in users land on the health dashboard.
+  {
+    path: '/welcome',
+    component: LoginView,
+    meta: { guestOnly: true }
+  },
+  {
+    path: '/login',
+    component: LoginView,
+    meta: { guestOnly: true }
+  },
   {
     path: '/',
-    component: () => import('@/layouts/MainLayout.vue'),
+    component: MainLayout,
+    meta: { requiresAuth: true },
     children: [
-      { path: '', component: () => import('@/pages/IndexPage.vue') },
-      { path: 'second', component: () => import('@/pages/SecondPage.vue') }
+      { path: '', component: IndexPage },
+      { path: 'glucose', component: IndexPage },
+      {
+        path: 'pressure',
+        component: () => import('../pages/BloodPressurePage.vue')
+      },
+      {
+        path: 'medications',
+        component: () => import('../pages/MedicationsPage.vue')
+      },
+      {
+        path: 'reminders',
+        component: () => import('../pages/RemindersPage.vue')
+      },
+      {
+        path: 'nutrition',
+        component: () => import('../pages/NutritionPage.vue')
+      },
+      {
+        path: 'education',
+        component: () => import('../pages/EducationPage.vue')
+      },
+      {
+        path: 'reports',
+        component: () => import('../pages/ReportsPage.vue')
+      },
+      {
+        path: 'profile',
+        component: () => import('../pages/ProfilePage.vue')
+      }
     ]
   },
-
-  // Always leave this as last one,
-  // but you can also remove it
   {
     path: '/:catchAll(.*)*',
-    component: () => import('@/pages/ErrorNotFound.vue')
+    component: () => import('../pages/ErrorNotFound.vue')
   }
 ]
 
