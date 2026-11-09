@@ -24,7 +24,7 @@ export default defineConfig((/* ctx */) => {
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-file#build
     build: {
-      publicPath: process.env.NODE_ENV === 'production' ? '/Vitalia/' : '/',
+      publicPath: '/',
 
       env: {
         clientPrefix: ['QCLI_', 'VITE_']
@@ -35,7 +35,7 @@ export default defineConfig((/* ctx */) => {
         // node: 'node22'
       },
 
-      vueRouterMode: 'hash' // El modo hash evita errores de pantalla en blanco en GitHub Pages
+      vueRouterMode: 'hash'
     },
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-file#devserver
