@@ -18,19 +18,14 @@ export default defineConfig((/* ctx */) => {
 
     // https://github.com/quasarframework/quasar/tree/dev/extras
     extras: [
-      // 'ionicons-v4',
-      // 'mdi-v7',
-      // 'fontawesome-v7',
-      // 'eva-icons',
-      // 'themify',
-      // 'line-awesome',
-
-      'roboto-font', // optional, you are not bound to it
-      'material-icons' // optional, you are not bound to it
+      'roboto-font',
+      'material-icons'
     ],
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-file#build
     build: {
+      publicPath: process.env.NODE_ENV === 'production' ? '/Vitalia/' : '/',
+
       env: {
         clientPrefix: ['QCLI_', 'VITE_']
       },
@@ -40,7 +35,7 @@ export default defineConfig((/* ctx */) => {
         // node: 'node22'
       },
 
-      vueRouterMode: 'hash' // available values: 'hash', 'history'
+      vueRouterMode: 'hash' // El modo hash evita errores de pantalla en blanco en GitHub Pages
     },
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-file#devserver
@@ -75,7 +70,7 @@ export default defineConfig((/* ctx */) => {
         json.name = 'Vitalia'
         json.short_name = 'Vitalia'
         json.description = 'Seguimiento personal de salud y bienestar'
-        json.display = 'standalone' // Esto quita la barra del navegador para que se abra como Facebook / WhatsApp
+        json.display = 'standalone'
         json.orientation = 'portrait'
         json.background_color = '#fdf8f8'
         json.theme_color = '#d86b7a'
