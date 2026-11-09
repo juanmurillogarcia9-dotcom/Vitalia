@@ -1,0 +1,1 @@
+import{t as e}from"./pinia-AwQvYTuV.js";import{t}from"./wrappers-Dfvzj6n2.js";var n=t(({app:t})=>{t.use(e())});export{n as default};
