@@ -8,7 +8,7 @@ const recordColumns =
 const medicationColumns =
   'id, user_id, name, dosage, frequency, schedules, notes, active, created_at, updated_at'
 const mealColumns =
-  'id, user_id, name, category, calories, protein, carbohydrates, potassium, notes, date, created_at'
+  'id, user_id, name, category, calories, protein, carbs, fats, notes, date, created_at'
 
 const requireText = (value, label) => {
   const text = String(value ?? '').trim()
@@ -98,11 +98,11 @@ const normalizeMeal = input => {
     ).trim(),
     calories: optionalNonNegativeNumber(input.calories, 'Las calorías'),
     protein: optionalNonNegativeNumber(input.protein, 'La proteína'),
-    carbohydrates: optionalNonNegativeNumber(
-      input.carbohydrates ?? input.carbs,
+    carbs: optionalNonNegativeNumber(
+      input.carbs ?? input.carbohydrates,
       'Los carbohidratos'
     ),
-    potassium: optionalNonNegativeNumber(input.potassium, 'El potasio'),
+    fats: optionalNonNegativeNumber(input.fats, 'Las grasas'),
     notes: String(input.notes ?? '').trim()
   }
   const date = normalizeDate(
