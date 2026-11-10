@@ -1,1 +1,7 @@
-﻿{`n  "outputDirectory": "dist/spa",`n  "cleanUrls": true,`n  "rewrites": [j`n    { "source": "/(.*)", "destination": "/index.html" }`n  ]`n}
+﻿{
+  "outputDirectory": "dist/spa",
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
